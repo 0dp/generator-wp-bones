@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ![alt tag](https://raw.github.com/danielauener/generator-wp-grunted-theme/master/header.png)
 
 # generator-wp-bones
@@ -29,9 +29,4 @@ $ yo wp-bones
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
-=======
-generator-wp-bones
-==================
 
-Yeomen generator to quickly install Bones Wordpress starter theme into your Wordpress theme folder
->>>>>>> 8bdc4ca896a9233bec8301ab1317fb46bf123e7d

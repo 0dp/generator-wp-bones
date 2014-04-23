@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-![alt tag](https://raw.github.com/danielauener/generator-wp-grunted-theme/master/header.png)
+
+![alt tag](https://raw.github.com/0dp/generator-wp-bones/master/header.png)
 
 # generator-wp-bones
 
