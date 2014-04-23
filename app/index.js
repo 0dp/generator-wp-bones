@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var EventEmitter = require('events').EventEmitter;
-//TODO: line 86
+//TODO: line 93
 //var	git = require('simple-git');
 //var bonesRepo = "git://github.com/eddiemachado/bones.git";
 
@@ -13,14 +13,11 @@ var WpBonesGenerator = module.exports = function WpBonesGenerator(args, options,
 
   this.on('end', function () {
     this.installDependencies({ skipInstall: options['skip-install'] });
-        if (this.themeNameSpace) {
-        process.chdir(this.themeNameSpace+"/grunt/");
-        this.installDependencies({ skipInstall: options['skip-install'], bower: false });
-       }
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
+
 
 util.inherits(WpBonesGenerator, yeoman.generators.Base);
 
@@ -89,14 +86,12 @@ return 'This is a description for the '+answers.themeName+' theme.';
   }.bind(this));
 };
 
-
 WpBonesGenerator.prototype.app = function app() {
   var currentDate = new Date()
   this.themeCreated = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
   this.directory('theme', this.themeNameSpace);
   //TODO: Fetch the most recent version from git (see top)
-//  require('simple-git')().clone(this.bonesRepo,this.themeNameSpace)
-  
+//  require('simple-git')().fetch(this.bonesRepo,this.themeNameSpace)
   
   this.mkdir(this.themeNameSpace+'/library/dist');
   this.mkdir(this.themeNameSpace+'/library/fonts');
