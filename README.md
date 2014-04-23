@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![alt tag](https://raw.github.com/danielauener/generator-wp-grunted-theme/master/header.png)
 
 # generator-wp-bones
@@ -27,4 +28,5 @@ $ yo wp-bones
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
 
