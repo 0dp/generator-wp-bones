@@ -57,7 +57,9 @@ Error: ENOENT, no such file or directory
 
 ## TODO
 
-Instead of having the Bones Wordpress starter theme living in a folder in templates it would be nice to 'fetch' (dunno if this is the right term because i'm still a noob at git) it fresh from it's repo here at git. I have already included simple-git into the generator so it just need to be setup right. 
+
+*   Instead of having the Bones Wordpress starter theme living in a folder in templates it would be nice to 'fetch' (dunno if this is the right term because i'm still a noob at git) it fresh from it's repo here at git. I have already included simple-git into the generator so it just need to be setup right. 
+*   Convince my girlfriend to get a second cat
 
 
 ## License
