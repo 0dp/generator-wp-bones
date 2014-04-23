@@ -1,0 +1,49 @@
+{
+  "name": "generator-wp-bones",
+  "version": "0.0.1",
+  "description": "Installs Bones Wordpress starter theme into the current directory - goto the themes folder and run yo wp-bones  ",
+  "keywords": [
+    "yeoman-generator",
+    "Bones Wordpress starter theme"
+    
+  ],
+  "homepage": "https://github.com/0dp/generator-wp-bones",
+  "bugs": "https://github.com/0dp/generator-wp-bones/issues",
+  "author": {
+    "name": "Johan Nielsen",
+    "email": "odinp123@gmail.com",
+    "url": "https://github.com/0dp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/0dp/generator-wp-bones.git"
+},
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/0dp/generator-wp-bones.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.0",
+    "simple-git": "~0.7.0",
+    "chalk": "~0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=0.8.x",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
