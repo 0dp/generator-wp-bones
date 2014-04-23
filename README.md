@@ -2,8 +2,8 @@
 
 # generator-wp-bones
 
-A WordPress theme [Yeoman](http://yeoman.io) generator, to kickstart WordPress Bones
-theme development with yo, sass and grunt.
+A WordPress theme [Yeoman](http://yeoman.io) generator, to kickstart your [WordPress Bones
+theme development](https://github.com/eddiemachado/bones) with yo, sass and grunt.
 
 **Note:** Still in development
 
