@@ -4,7 +4,6 @@
 var fs = require('fs');
 var RSVP = require('rsvp');
 var simpleGit = require('simple-git')();
-var path = require('path');
 var exec = require('child_process').exec;
 var rmdir = require('rmdir');
 
@@ -40,17 +39,13 @@ var cleanDir = function (localPath) {
     fs.exists(localPath, function (exists) {
       // okey it exists, we need to removes it
       if (exists) {
-        // nodejs can't remove directory,
-        // this is a rule from UNIX systems...
-        //
-        // so we need to setup a path for our command line
-        var absolutePath = path.join(__dirname, '..', localPath);
-        // okey execute the 'unix command'
-        exec('rm -r ' + absolutePath, function (err, stderr) {
+        // let's try to remove the directory with the fastest solution
+        // using `rm -rf` cmd
+        exec('rm -r ' + localPath, function (err, stderr) {
           // if something is wrong, maybe we are on windows?
           // let's try another solution that would be slower...
           if (err || stderr) {
-            rmdir(absolutePath, function (err) {
+            rmdir(localPath, function (err) {
               if (err) {
                 // hmm... not on windows too
                 // please report bugs and issues on github
