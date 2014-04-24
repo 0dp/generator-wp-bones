@@ -44,13 +44,13 @@ var cleanDir = function (localPath) {
         // this is a rule from UNIX systems...
         //
         // so we need to setup a path for our command line
-        var a = path.join(__dirname, '..', localPath);
+        var absolutePath = path.join(__dirname, '..', localPath);
         // okey execute the 'unix command'
-        exec('rm -r ' + a, function (err, stderr) {
+        exec('rm -r ' + absolutePath, function (err, stderr) {
           // if something is wrong, maybe we are on windows?
           // let's try another solution that would be slower...
           if (err || stderr) {
-            rmdir(a, function (err) {
+            rmdir(absolutePath, function (err) {
               if (err) {
                 // hmm... not on windows too
                 // please report bugs and issues on github
