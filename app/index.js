@@ -114,7 +114,8 @@ return 'This is a description for the '+answers.themeName+' theme.';
   }];
 
   var self = this;
-
+  // Fetch theme from github before starting...
+  console.log('\nDownloading latest version of the boilerplate...\n');
   cloneBones(baseThemePath).then(function () {
     self.prompt(prompts, function (props) {
       self.themeName = props.themeName;
