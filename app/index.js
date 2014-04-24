@@ -4,20 +4,19 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var EventEmitter = require('events').EventEmitter;
-//TODO: line 93
-//var	git = require('simple-git');
-//var bonesRepo = "git://github.com/eddiemachado/bones.git";
+var baseThemePath = path.join(__dirname, '/templates/', '/theme');
+
+// Libs
+var libsPath = path.join(__dirname + '/../' + '/libs/');
+var cloneBones = require(libsPath + 'clone-bones');
 
 var WpBonesGenerator = module.exports = function WpBonesGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
-
   this.on('end', function () {
     this.installDependencies({ skipInstall: options['skip-install'] });
   });
-
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '/../', '/package.json')));
 };
-
 
 util.inherits(WpBonesGenerator, yeoman.generators.Base);
 
@@ -68,17 +67,16 @@ console.log(chalk.blue.bold("                                +++++++++++++++++++
 console.log(chalk.blue.bold("                                  +++++++++++++++++++++                             "));
 console.log(chalk.blue.bold("                                    +++++++++++++++++                               "));
 console.log(chalk.blue.bold("                                     x+++++++++++x                                  "));
-                                           
 
-  
-console.log(chalk.blue.bold("       :::::::::        ::::::::        ::::    :::        ::::::::::        :::::::: "));  
-console.log(chalk.blue.bold("     :+:    :+:      :+:    :+:       :+:+:   :+:        :+:              :+:    :+:  "));  
-console.log(chalk.blue.bold("    +:+    +:+      +:+    +:+       :+:+:+  +:+        +:+              +:+          "));  
-console.log(chalk.blue.bold("   +#++:++#+       +#+    +:+       +#+ +:+ +#+        +#++:++#         +#++:++#++    "));   
-console.log(chalk.blue.bold("  +#+    +#+      +#+    +#+       +#+  +#+#+#        +#+                     +#+     "));  
-console.log(chalk.blue.bold(" #+#    #+#      #+#    #+#       #+#   #+#+#        #+#              #+#    #+#      "));   
-console.log(chalk.blue.bold("#########        ########        ###    ####        ##########        ########        "));  
 
+
+console.log(chalk.blue.bold("       :::::::::        ::::::::        ::::    :::        ::::::::::        :::::::: "));
+console.log(chalk.blue.bold("     :+:    :+:      :+:    :+:       :+:+:   :+:        :+:              :+:    :+:  "));
+console.log(chalk.blue.bold("    +:+    +:+      +:+    +:+       :+:+:+  +:+        +:+              +:+          "));
+console.log(chalk.blue.bold("   +#++:++#+       +#+    +:+       +#+ +:+ +#+        +#++:++#         +#++:++#++    "));
+console.log(chalk.blue.bold("  +#+    +#+      +#+    +#+       +#+  +#+#+#        +#+                     +#+     "));
+console.log(chalk.blue.bold(" #+#    #+#      #+#    #+#       #+#   #+#+#        #+#              #+#    #+#      "));
+console.log(chalk.blue.bold("#########        ########        ###    ####        ##########        ########        "));
 
   var prompts = [{
     name: 'themeName',
@@ -115,30 +113,28 @@ return 'This is a description for the '+answers.themeName+' theme.';
 }
   }];
 
-  this.prompt(prompts, function (props) {
-    this.themeName = props.themeName;
-    this.themeNameSpace = props.themeNameSpace;
-    this.themeAuthor = props.themeAuthor;
-    this.themeAuthorURI = props.themeAuthorURI;
-    this.themeURI = props.themeURI;
-    this.themeDescription = props.themeDescription;
-    this.jshintTag = '<%= jshint.all %>';
-
-    cb();
-  }.bind(this));
+  var self = this;
+  // Fetch theme from github before starting...
+  console.log('\nDownloading latest version of the boilerplate...\n');
+  cloneBones(baseThemePath).then(function () {
+    self.prompt(prompts, function (props) {
+      self.themeName = props.themeName;
+      self.themeNameSpace = props.themeNameSpace;
+      self.themeAuthor = props.themeAuthor;
+      self.themeAuthorURI = props.themeAuthorURI;
+      self.themeURI = props.themeURI;
+      self.themeDescription = props.themeDescription;
+      self.jshintTag = '<%= jshint.all %>';
+      cb();
+    }.bind(self));
+  });
 };
 
 WpBonesGenerator.prototype.app = function app() {
-  var currentDate = new Date()
-  this.themeCreated = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
+  var currentDate = new Date();
   this.directory('theme', this.themeNameSpace);
-  //TODO: Fetch the most recent version from git (see top)
-//  require('simple-git')().fetch(this.bonesRepo,this.themeNameSpace)
-  
-  this.mkdir(this.themeNameSpace+'/library/dist');
-  this.mkdir(this.themeNameSpace+'/library/fonts');
-  this.mkdir(this.themeNameSpace+'/library/grunt');
+  this.themeCreated = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
 
-  this.template('_gruntfile.js', this.themeNameSpace+'/library/grunt/gruntfile.js')
-  this.template('_package.json', this.themeNameSpace+'/library/grunt/package.json')
+  this.template('_gruntfile.js', this.thisNameSpace + '/library/grunt/gruntfile.js')
+  this.template('_package.json', this.thisNameSpace + '/library/grunt/package.json')
 };
