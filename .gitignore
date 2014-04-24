@@ -2,3 +2,4 @@ node_modules/
 temp/
 *~
 app/templates/theme
+npm-debug.log
