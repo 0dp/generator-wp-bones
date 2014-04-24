@@ -25,6 +25,51 @@ WpBonesGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   //ASCII art
+
+console.log(chalk.blue.bold("                                    +++++++++++++++++                               "));
+console.log(chalk.blue.bold("                                  +++++++++++++++++++++                             "));
+console.log(chalk.blue.bold("                                ++++++++++++=++     ;++++                           "));
+console.log(chalk.blue.bold("                               +++++++++++;  ==-      ++++                          "));
+console.log(chalk.blue.bold("                              ++++++++++=.   -+==;  -+===++                         "));
+console.log(chalk.blue.bold("                             +++++++++++x")+chalk.white.bgWhite.bold(" ...")+chalk.blue.bold("++++++++=++ -++                        "));
+console.log(chalk.blue.bold("                            +++++++++++")+chalk.white.bgWhite.bold(".......")+chalk.blue.bold("++=,-+++=+  -++                       "));
+console.log(chalk.blue.bold("                           +++++++++=")+chalk.white.bgWhite.bold("............   ")+chalk.blue.bold("=++=.  =++                      "));
+console.log(chalk.blue.bold("                          ++++++++=")+chalk.white.bgWhite.bold(".... ...........  ")+chalk.blue.bold("++=+   +++                     "));
+console.log(chalk.blue.bold("                          +++++++,")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("+xx+")+chalk.white.bgWhite.bold("............")+chalk.blue.bold(",xx+x,.-++                     "));
+console.log(chalk.blue.bold("                         +++++++-")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("++++++=")+chalk.white.bgWhite.bold("...........")+chalk.blue.bold("+++++xx+++                    "));
+console.log(chalk.blue.bold("                         +++++++")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("=++++++x")+chalk.white.bgWhite.bold(" ..........")+chalk.blue.bold("+x++++xx++                    "));
+console.log(chalk.blue.bold("                        ++++++++")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("xxx+=xxx")+chalk.white.bgWhite.bold(" .........")+chalk.blue.bold("-+x+,, .x+++                   "));
+console.log(chalk.blue.bold("                        ++++++++")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("xx")+chalk.white.bgWhite.bold(".. ")+chalk.blue.bold("+xx")+chalk.white.bgWhite.bold(" ..........")+chalk.blue.bold("xx-    -x++ +                 "));
+console.log(chalk.blue.bold("                        +++++++++")+chalk.white.bgWhite.bold("..")+chalk.blue.bold("+xxx+=xx")+chalk.white.bgWhite.bold(" ...........")+chalk.blue.bold("x-,.-..x++++                 "));
+console.log(chalk.blue.bold("                        +++++++++-")+chalk.white.bgWhite.bold(". ")+chalk.blue.bold("xxxxxx+")+chalk.white.bgWhite.bold("......,.....")+chalk.blue.bold("xx-,=.=x++++                 "));
+console.log(chalk.blue.bold("                        ++++++++++")+chalk.white.bgWhite.bold("..")+chalk.blue.bold(",+xxx+")+chalk.white.bgWhite.bold(".........,,,,.")+chalk.blue.bold("x-.,.xxx+++                 "));
+console.log(chalk.blue.bold("                        +++++++++++")+chalk.white.bgWhite.bold(".. .........")+chalk.blue.bold("++++x,")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("xxxxxx..+++                 "));
+console.log(chalk.blue.bold("                        ++++++++++=")+chalk.white.bgWhite.bold(".....")+chalk.blue.bold("+=")+chalk.white.bgWhite.bold("....")+chalk.blue.bold("x+++++x")+chalk.white.bgWhite.bold(",,,")+chalk.blue.bold("-xxxx...+++                 "));
+console.log(chalk.blue.bold("                        ++++++++++")+chalk.white.bgWhite.bold("....")+chalk.blue.bold("-xxx-")+chalk.white.bgWhite.bold("..")+chalk.blue.bold(",++xx+++-")+chalk.white.bgWhite.bold(",,,")+chalk.blue.bold(".-xx...+++                 "));
+console.log(chalk.blue.bold("                        +++++++++")+chalk.white.bgWhite.bold(" ...")+chalk.blue.bold("-xxxx")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("=x=")+chalk.white.bgWhite.bold("..")+chalk.blue.bold("=xx+")+chalk.white.bgWhite.bold(";;--")+chalk.blue.bold(".+x...+++                 "));
+console.log(chalk.blue.bold("                        ++++++++")+chalk.white.bgWhite.bold(".....")+chalk.blue.bold("xxxxx")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("=x=x=-xx+;")+chalk.white.bgWhite.bold("---")+chalk.blue.bold(".;x...+++                 "));
+console.log(chalk.blue.bold("                        +++++++=")+chalk.white.bgWhite.bold(".....")+chalk.blue.bold(";xxx")+chalk.white.bgWhite.bold("....,")+chalk.blue.bold("xxx-+xx-;")+chalk.white.bgWhite.bold(";-")+chalk.blue.bold("=.-x,.=+++                 "));
+console.log(chalk.blue.bold("                        ++++++++")+chalk.white.bgWhite.bold(".......")+chalk.blue.bold("x=")+chalk.white.bgWhite.bold("....,")+chalk.blue.bold("+xxxxxx;;")+chalk.white.bgWhite.bold("--")+chalk.blue.bold("=.xxx,++++                 "));
+console.log(chalk.blue.bold("                        ++++++++=")+chalk.white.bgWhite.bold("......")+chalk.blue.bold("")+chalk.white.bgWhite.bold(",.....,")+chalk.blue.bold(";;+xx=;;")+chalk.white.bgWhite.bold("---")+chalk.blue.bold("=+xx++++++                 "));
+console.log(chalk.blue.bold("                        +++++++++=")+chalk.white.bgWhite.bold("...")+chalk.blue.bold("")+chalk.white.bgWhite.bold(",.....,..,;;")+chalk.white.bgWhite.bold("---;;;")+chalk.blue.bold("-=Xxxx+= +++                 "));
+console.log(chalk.blue.bold("                        ++++++++++=")+chalk.white.bgWhite.bold(".;......")+chalk.blue.bold("=+x-")+chalk.white.bgWhite.bold(",,,,,,;;")+chalk.blue.bold("-=x++xx+  x                  "));
+console.log(chalk.blue.bold("                        ++++++++++++,")+chalk.white.bgWhite.bold("..;..")+chalk.blue.bold("xxxx;=;,;;;;;-,++xx++ .                   "));
+console.log(chalk.blue.bold("                        ++++++++++++xx,")+chalk.white.bgWhite.bold("..")+chalk.blue.bold("xxxx;;--+====++;xxxxxx+,                   "));
+console.log(chalk.blue.bold("                         ++++=")+chalk.white.bgWhite.bold("..")+chalk.blue.bold(";++xxxx+xxxx,;;;-+++-=++.xxxxxxx                    "));
+console.log(chalk.blue.bold("                         ++++=")+chalk.white.bgWhite.bold(".... ")+chalk.blue.bold(",=xxxxxx,;;;;++++=-=-.xxxx++x                    "));
+console.log(chalk.blue.bold("                          +++-  ")+chalk.white.bgWhite.bold("...")+chalk.blue.bold(";")+chalk.white.bgWhite.bold(".. ")+chalk.blue.bold("xxx,,.,,++++++=;;+xxxx++                     "));
+console.log(chalk.blue.bold("                          +++-")+chalk.white.bgWhite.bold(".....,.,")+chalk.blue.bold(".xx")+chalk.white.bgWhite.bold("....,")+chalk.blue.bold("++++++++++++xxx++                     "));
+console.log(chalk.blue.bold("                          ++=")+chalk.white.bgWhite.bold(".....,.........")+chalk.blue.bold("++++++++++++++xx+                       "));
+console.log(chalk.blue.bold("                            ++")+chalk.white.bgWhite.bold("..............")+chalk.blue.bold("=++++++++++++++++                       "));
+console.log(chalk.blue.bold("                             +++-")+chalk.white.bgWhite.bold("..,,,,")+chalk.white.bgWhite.bold("...")+chalk.blue.bold(",+++++++++++++++++                        "));
+console.log(chalk.blue.bold("                              +++++++===+++++++++++++++++++                         "));
+console.log(chalk.blue.bold("                               +++++++++++++++++++++++++++                          "));
+console.log(chalk.blue.bold("                                +++++++++++++++++++++++++                           "));
+console.log(chalk.blue.bold("                                  +++++++++++++++++++++                             "));
+console.log(chalk.blue.bold("                                    +++++++++++++++++                               "));
+console.log(chalk.blue.bold("                                     x+++++++++++x                                  "));
+                                           
+
   
 console.log(chalk.blue.bold("       :::::::::        ::::::::        ::::    :::        ::::::::::        :::::::: "));  
 console.log(chalk.blue.bold("     :+:    :+:      :+:    :+:       :+:+:   :+:        :+:              :+:    :+:  "));  
@@ -33,10 +78,7 @@ console.log(chalk.blue.bold("   +#++:++#+       +#+    +:+       +#+ +:+ +#+    
 console.log(chalk.blue.bold("  +#+    +#+      +#+    +#+       +#+  +#+#+#        +#+                     +#+     "));  
 console.log(chalk.blue.bold(" #+#    #+#      #+#    #+#       #+#   #+#+#        #+#              #+#    #+#      "));   
 console.log(chalk.blue.bold("#########        ########        ###    ####        ##########        ########        "));  
-  
-  console.log(chalk.blue.bold("              ////////////////////////////////////////////////"));    
-  console.log(chalk.blue.bold("              START YOUR GRUNTED BONES WORDPRESS STARTER THEME"));
-  console.log(chalk.blue.bold("              ////////////////////////////////////////////////"));
+
 
   var prompts = [{
     name: 'themeName',
