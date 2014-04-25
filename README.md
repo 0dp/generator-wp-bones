@@ -8,7 +8,7 @@ theme development](https://github.com/eddiemachado/bones) with yo, sass and grun
 **Note:** Still in development
 
 
-## Getting Started (for when it is published official)
+## Getting Started
 
 
 Install generator-wp-bones from npm:
