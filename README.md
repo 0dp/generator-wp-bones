@@ -11,14 +11,14 @@ theme development](https://github.com/eddiemachado/bones) with yo, sass and grun
 ## Getting Started (for when it is published official)
 
 
-~~Install generator-wp-bones from npm:~~
+Install generator-wp-bones from npm:
 
 ```
 $ npm install -g generator-wp-bones
 ```
 
-~~Finally, initiate the generator. run this command in
-a working WordPress installations *themes* directory:~~
+Finally, initiate the generator. run this command in
+a working WordPress installations *themes* directory:
 
 ```
 $ yo wp-bones
