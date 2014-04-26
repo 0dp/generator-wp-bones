@@ -12,9 +12,9 @@ var bones = 'git://github.com/eddiemachado/bones.git';
 
 // Configure RSVP promise to yell when something goes wrong
 // --------------------------------------------------------
-RSVP.on('error', function(e) {
-  console.log(e.message);
-  console.log(e.stack);
+RSVP.on('error', function (event) {
+  console.log(event.message);
+  console.log(event.stack);
 });
 
 // Helper function to create a directory with a path given
@@ -88,7 +88,7 @@ var cleanDir = function (localPath) {
 // And if the user delete the `.git` folder, we would have to re-create it.
 // So safer, faster to delete and clone again.
 var cloneBones = function (localPath) {
-  var promise = new RSVP.Promise(function(resolve, reject) {
+  var promise = new RSVP.Promise(function (resolve, reject) {
     // So first, we clean our directory
     cleanDir(localPath).then(function () {
       // then we clone our directort
