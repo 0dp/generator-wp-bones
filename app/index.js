@@ -1,6 +1,7 @@
 'use strict';
 var util = require('util');
 var path = require('path');
+var async = require('async');
 var yeoman = require('yeoman-generator');
 
 // Libs
@@ -10,9 +11,48 @@ var ascii = require(libsPath + 'ascii');
 
 var WpBonesGenerator = module.exports = function (args, options) {
   yeoman.generators.Base.apply(this, arguments);
+
+  // Need to override the default yeoman method in order to make
+  // this works. If someone has a better idea, tell me. (@iam4x)
+  this.directory = function (source, destination, process) {
+    // Yeah just for this line, need to set the root as the source
+    // or it will look inside the generator itself
+    var root = source;
+    var files = this.expandFiles('**', {dot: true, cwd: root});
+    var self = this;
+
+    destination = destination || source;
+
+    if (typeof destination === 'function') {
+      process = destination;
+      destination = source;
+    }
+
+    // get the path relative to the template root, and copy to the relative destination
+    var resolveFiles = function (filepath) {
+      return function (next) {
+        if (!filepath) {
+          self.emit('directory:end');
+          return next();
+        }
+
+        var dest = path.join(destination, filepath);
+        self.copy(path.join(root, filepath), dest, process);
+
+        return next();
+      };
+    };
+
+    async.parallel(files.map(resolveFiles));
+    return this;
+  };
+
   this.on('end', function () {
-    this.installDependencies({skipInstall: options['skip-install']});
+    this.installDependencies({
+      skipInstall: options['skip-install']
+    });
   });
+
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '/../', '/package.json')));
 };
 
@@ -26,7 +66,8 @@ WpBonesGenerator.prototype.askFor = function () {
   var prompts = [
     {
       name: 'themeName',
-      message: 'Name of the theme you want to create?'
+      message: 'Name of the theme you want to create?',
+      default: 'bones'
     },
     {
       name: 'themeNameSpace',
@@ -68,7 +109,7 @@ WpBonesGenerator.prototype.askFor = function () {
   var self = this;
   // Fetch theme from github before starting...
   console.log('\nDownloading latest version of the boilerplate...\n');
-  cloneBones().then(function () {
+  cloneBones().then(function (directory) {
     self.prompt(prompts, function (props) {
       self.themeName = props.themeName;
       self.themeNameSpace = props.themeNameSpace;
@@ -76,6 +117,7 @@ WpBonesGenerator.prototype.askFor = function () {
       self.themeAuthorURI = props.themeAuthorURI;
       self.themeURI = props.themeURI;
       self.themeDescription = props.themeDescription;
+      self.directory(directory, self.themeNameSpace);
       self.jshintTag = '<%= jshint.all %>';
       cb();
     }.bind(self));
@@ -84,9 +126,8 @@ WpBonesGenerator.prototype.askFor = function () {
 
 WpBonesGenerator.prototype.app = function () {
   var currentDate = new Date();
-  this.directory('theme', this.themeNameSpace);
   this.themeCreated = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
 
-  this.template('_gruntfile.js', this.thisNameSpace + '/library/grunt/gruntfile.js');
-  this.template('_package.json', this.thisNameSpace + '/library/grunt/package.json');
+  this.template('_gruntfile.js', this.themeNameSpace + '/library/grunt/gruntfile.js');
+  this.template('_package.json', this.themeNameSpace + '/library/grunt/package.json');
 };
