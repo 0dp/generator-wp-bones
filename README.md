@@ -26,15 +26,7 @@ $ yo wp-bones
 
 ## Known Issues
 
-I just wrote this up and there is some minor issues.
-
-I have failed to kill these warnings
-
-```
-npm WARN package.json package@0.0.0 No description
-npm WARN package.json package@0.0.0 No repository field.
-npm WARN package.json package@0.0.0 No README data
-```
+Let me know
 
 ## TODO
 
