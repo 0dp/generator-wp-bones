@@ -128,6 +128,6 @@ WpBonesGenerator.prototype.app = function () {
   var currentDate = new Date();
   this.themeCreated = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
 
-  this.template('_gruntfile.js', this.themeNameSpace + '/library/grunt/gruntfile.js');
-  this.template('_package.json', this.themeNameSpace + '/library/grunt/package.json');
+  this.template('_gruntfile.js', this.themeNameSpace + '/gruntfile.js');
+  this.template('_package.json', this.themeNameSpace + '/package.json');
 };
