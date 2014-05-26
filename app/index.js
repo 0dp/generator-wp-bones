@@ -47,11 +47,20 @@ var WpBonesGenerator = module.exports = function (args, options) {
     return this;
   };
 
-  this.on('end', function () {
-    this.installDependencies({
-      skipInstall: options['skip-install']
-    });
-  });
+	this.on('end', function () {
+		try {
+			process.chdir(process.cwd() + '/' + this.themeNameSpace + '/library/grunt');
+			this.installDependencies({
+				skipInstall: options['skip-install'],
+				callback: function () {
+					this.spawnCommand('grunt', ['default']);
+				}.bind(this)
+			});
+
+		} catch (err) {
+			console.log('Failed to install dependencies: ' + err);
+		}
+	});
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '/../', '/package.json')));
 };
