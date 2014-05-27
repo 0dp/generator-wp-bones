@@ -40,3 +40,6 @@ Let me know
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 
+## Thanks To
+Glen Geenen
+Maxime Tyler
