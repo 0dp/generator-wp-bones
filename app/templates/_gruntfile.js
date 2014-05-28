@@ -50,44 +50,53 @@ module.exports = function(grunt) {
 				options: {
 					style: 'expanded'
 				},
-				src: ['../scss/style.scss'],
-				dest: '../style.css'
+				files: {
+					'../css/style.css': '../scss/style.scss',
+					'../css/ie.css': '../scss/ie.scss',
+					'../css/login.css': '../scss/login.scss',
+					'../css/admin.css': '../scss/admin.scss'
+				}
 			},
 			prod: {
 				options: {
 					style: 'compressed'
 				},
-				src: ['../scss/style.scss'],
-				dest: '../style.css'
-			},
-			editorstyles: {
-				options: {
-					style: 'expanded'
-				},
-				src: ['../scss/wp-editor-style.scss'],
-				dest: '../css/wp-editor-style.css'
+				files: {
+					'../css/style.css': '../scss/style.scss',
+					'../css/ie.css': '../scss/ie.scss',
+					'../css/login.css': '../scss/login.scss',
+					'../css/admin.css': '../scss/admin.scss'
+				}
 			}
 		},
 
 		// watch for changes
 		watch: {
+			grunt: {
+				files: ['gruntfile.js'],
+			},
 			scss: {
 				files: ['../scss/**/*.scss'],
 				tasks: [
 					'sass:dev',
-					'sass:editorstyles',
 					'notify:scss'
-				]
+				],
+				options: {
+					livereload: true
+				}
 			},
 			js: {
 				files: [
-					'<%= jshintTag %>'
+					'<%= jshint.all %>'
 				],
 				tasks: [
 					'jshint',
 					'uglify',
 					'notify:js'
-				]
+				],
+				options: {
+					livereload: true
+				}
 			}
 		},
 
@@ -156,8 +165,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'jshint',
 		'uglify',
-		'sass:dev',
-		'sass:editorstyles'
+		'sass:dev'
 	]);
 
 	// Production task
@@ -166,7 +174,6 @@ module.exports = function(grunt) {
 			'jshint',
 			'uglify',
 			'sass:prod',
-			'sass:editorstyles',
 			'clean:dist',
 			'copyto:dist',
 			'notify:dist'
