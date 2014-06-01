@@ -87,7 +87,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: [
-					'<%= jshint.all %>'
+					'<%= jshintTag %>'
 				],
 				tasks: [
 					'jshint',
