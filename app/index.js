@@ -3,6 +3,8 @@ var util = require('util');
 var path = require('path');
 var async = require('async');
 var yeoman = require('yeoman-generator');
+var fs = require('fs');
+var chalk = require('chalk');
 
 // Libs
 var libsPath = path.join(__dirname + '/../' + '/libs/');
@@ -69,7 +71,7 @@ util.inherits(WpBonesGenerator, yeoman.generators.Base);
 
 WpBonesGenerator.prototype.askFor = function () {
   var cb = this.async();
-
+var _ = this._;
   ascii();
 
   var prompts = [
@@ -82,7 +84,7 @@ WpBonesGenerator.prototype.askFor = function () {
       name: 'themeNameSpace',
       message: 'Uniq name-space for the theme (alphanumeric)?',
       default: function (answers) {
-        return answers.themeName.replace(/\W/g, '').toLowerCase();
+        return _.slugify(answers.themeName);
       }
     },
     {
@@ -132,6 +134,56 @@ WpBonesGenerator.prototype.askFor = function () {
     }.bind(self));
   });
 };
+
+
+/*
+* basic replace function take from https://github.com/kdo/generator-wp-underscores 
+* thanks
+*/
+function findandreplace(dir) {
+  var self = this;
+  var _ = this._;
+
+  var files = fs.readdirSync(dir);
+  files.forEach(function (file) {
+    file = path.join(dir, file);
+    var stat = fs.statSync(file);
+
+    if (stat.isFile() && (path.extname(file) == '.php' || path.extname(file) == '.css')) {
+      self.log.info('Find and replace bones in ' + chalk.yellow(file));
+      var data = fs.readFileSync(file, 'utf8');
+      var result;
+      result = data.replace(/Text Domain: bonestheme/g, "Text Domain: " + _.slugify(self.themeName) + "");
+      result = result.replace(/'bonestheme'/g, "'" + _.slugify(self.themeName) + "'");
+      result = result.replace(/bonestheme_/g, _.underscored(_.slugify(self.themeName)) + "_");
+      result = result.replace(/ bonestheme/g, " " + self.themeName);
+      result = result.replace(/bonestheme-/g, _.slugify(self.themeName) + "-");
+      if (file == path.join(self.themeNameSpace,'style.css')) {
+        self.log.info('Updating theme information in ' + file);
+        result = result.replace(/(Theme Name: )(.+)/g, '$1' + self.themeName);
+        result = result.replace(/(Theme URI: )(.+)/g, '$1' + self.themeURI);
+        result = result.replace(/(Author: )(.+)/g, '$1' + self.themeAuthor);
+        result = result.replace(/(Author URI: )(.+)/g, '$1' + self.themeAuthorURI);
+        result = result.replace(/(Description: )(.+)/g, '$1' + self.themeDescription);
+        //result = result.replace(/(Version: )(.+)/g, '$10.0.1');
+        
+      }
+	  
+      fs.writeFileSync(file, result, 'utf8');
+    }
+
+    else if (stat.isDirectory()) {
+      findandreplace.call(self, file);
+    }
+  });
+}
+
+WpBonesGenerator.prototype.renameunderscores = function renameunderscores() {
+  var self = this;
+  findandreplace.call(this, './'+self.themeNameSpace);
+  this.log.ok('Done replacing string ' + chalk.yellow('bones'));
+};
+
 
 WpBonesGenerator.prototype.app = function () {
   var currentDate = new Date();
