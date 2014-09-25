@@ -26,7 +26,7 @@ $ yo wp-bones
 
 ## Known Issues
 
-* ~~Theme author info is never stored~~ Thanks to [LaboratorioEfe5](Lhttps://github.com/LaboratorioEfe5) 
+* ~~Theme author info is never stored~~ Thanks to [LaboratorioEfe5](https://github.com/LaboratorioEfe5) 
 
 ## TODO
 
