@@ -26,7 +26,7 @@ $ yo wp-bones
 
 ## Known Issues
 
-* ~~Theme author info is never stored~~ Thanks to [oldlastman](https://github.com/oldlastman) 
+* ~~Theme author info is never stored~~ Thanks to [LaboratorioEfe5](Lhttps://github.com/LaboratorioEfe5) 
 
 ## TODO
 
@@ -43,4 +43,4 @@ $ yo wp-bones
 ## Thanks To
 Glen Geenen
 Maxime Tyler
-José Pardo Barceló
+LaboratorioEfe5
