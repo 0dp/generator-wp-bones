@@ -44,3 +44,5 @@ $ yo wp-bones
 Glen Geenen
 Maxime Tyler
 LaboratorioEfe5
+yivi
+jbmicolai
