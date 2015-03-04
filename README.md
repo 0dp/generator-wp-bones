@@ -1,5 +1,5 @@
 ![alt tag](https://raw.github.com/0dp/generator-wp-bones/master/header.png)
-![npm version](http://img.shields.io/badge/generator--wp--bones-0.0.7-brightgreen.svg)
+![npm version](http://img.shields.io/badge/generator--wp--bones-0.0.8-brightgreen.svg)
 # generator-wp-bones
 
 A WordPress theme [Yeoman](http://yeoman.io) generator, to kickstart your [WordPress Bones
@@ -41,8 +41,8 @@ $ yo wp-bones
 
 
 ## Thanks To
-Glen Geenen
-Maxime Tyler
-LaboratorioEfe5
-yivi
-jbmicolai
+Glen Geenen - 
+Maxime Tyler - 
+LaboratorioEfe5 - 
+yivi - 
+jbmicolai - 
