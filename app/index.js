@@ -155,9 +155,9 @@ function findandreplace(dir) {
       var result;
       result = data.replace(/Text Domain: bonestheme/g, "Text Domain: " + _.slugify(self.themeName) + "");
       result = result.replace(/'bonestheme'/g, "'" + _.slugify(self.themeName) + "'");
-      result = result.replace(/bonestheme_/g, _.underscored(_.slugify(self.themeName)) + "_");
-      result = result.replace(/ bonestheme/g, " " + self.themeName);
-      result = result.replace(/bonestheme-/g, _.slugify(self.themeName) + "-");
+      result = result.replace(/bones_/g, _.underscored(_.slugify(self.themeName)) + "_");
+      result = result.replace(/ bones/g, " " + self.themeName);
+      result = result.replace(/bones-/g, _.slugify(self.themeName) + "-");
       if (file == path.join(self.themeNameSpace,'style.css')) {
         self.log.info('Updating theme information in ' + file);
         result = result.replace(/(Theme Name: )(.+)/g, '$1' + self.themeName);

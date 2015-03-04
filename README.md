@@ -1,5 +1,5 @@
 ![alt tag](https://raw.github.com/0dp/generator-wp-bones/master/header.png)
-
+![npm version](http://img.shields.io/badge/generator--wp--bones-0.0.7-brightgreen.svg)
 # generator-wp-bones
 
 A WordPress theme [Yeoman](http://yeoman.io) generator, to kickstart your [WordPress Bones
@@ -30,7 +30,7 @@ $ yo wp-bones
 
 ## TODO
 
-
+*   A fancy deploy-to-production plan [Issue #9] (https://github.com/0dp/generator-wp-bones/issues/9)
 *   ~~Instead of having the Bones Wordpress starter theme living in a folder in templates it would be nice to 'fetch' (dunno if this is the right term because i'm still a noob at git) it fresh from it's repo here at git. I have already included simple-git into the generator so it just need to be setup right.~~ Thanks to [iam4x](https://github.com/iam4x) 
 *   Convince my girlfriend to get a second cat
 
