@@ -134,7 +134,7 @@ var _ = this._;
       self.themeAuthorURI = props.themeAuthorURI;
       self.themeURI = props.themeURI;
       self.themeDescription = props.themeDescription;
-      self.removeCustomPostTypes = (/y/i).test(props.removeCustomPostTypes);
+      self.removeCustomPostTypes = (/y/i).test(props.removeCustomPostTypes); //WHAT PROMPTS SHOULD WE HAVE?
       self.directory(directory, self.themeNameSpace);
       self.jshintTag = '<%= jshint.all %>';
       cb();
@@ -142,6 +142,10 @@ var _ = this._;
     
   });
 };
+
+///////////////
+// FEATURE11 //
+///////////////
 
 WpBonesGenerator.prototype.removeCPT = function removeCPT () {
   if (this.removeCustomPostTypes) {
