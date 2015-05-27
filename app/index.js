@@ -3,7 +3,8 @@ var util = require('util');
 var path = require('path');
 var async = require('async');
 var yeoman = require('yeoman-generator');
-var fs = require('fs');
+//var fs = require('fs');
+var fs = require('fs-extra');
 var chalk = require('chalk');
 
 // Libs
@@ -51,7 +52,7 @@ var WpBonesGenerator = module.exports = function (args, options) {
 
 	this.on('end', function () {
 		try {
-			process.chdir(process.cwd() + '/' + this.themeNameSpace + '/library/grunt');
+			process.chdir(process.cwd() + '/' + this.themeNameSpace + '/library/grunt/');
 			this.installDependencies({
 				skipInstall: options['skip-install'],
 				callback: function () {
@@ -114,6 +115,11 @@ var _ = this._;
       default: function (answers) {
         return 'This is a description for the ' + answers.themeName + ' theme.';
       }
+    },
+    {
+      name: 'removeCustomPostTypes',
+      message: 'Would you like to remove the default custom post types?',
+      default: 'Y/n'
     }
   ];
 
@@ -128,11 +134,45 @@ var _ = this._;
       self.themeAuthorURI = props.themeAuthorURI;
       self.themeURI = props.themeURI;
       self.themeDescription = props.themeDescription;
+      self.removeCustomPostTypes = (/y/i).test(props.removeCustomPostTypes);
       self.directory(directory, self.themeNameSpace);
       self.jshintTag = '<%= jshint.all %>';
       cb();
     }.bind(self));
+    
   });
+};
+
+WpBonesGenerator.prototype.removeCPT = function removeCPT () {
+  if (this.removeCustomPostTypes) {
+  var self = this;
+  
+  //Take care of functions.php
+  var body = fs.readFileSync(self.themeNameSpace+'/functions.php').toString();
+  var input = body.split('\n');
+
+  input.splice(29,2);
+  var output = input.join('\n');    
+  fs.writeFileSync(self.themeNameSpace+'/functions.php', output);
+
+  //Take care of custom-post-types.php
+  fs.removeSync(self.themeNameSpace+'/library/custom-post-type.php');
+  
+  //Take care of post-formats folder
+  fs.removeSync(self.themeNameSpace+'/post-formats');
+  
+  //Take care of bones.php
+  var bp = fs.readFileSync(self.themeNameSpace+'/library/bones.php').toString();
+  var inp = bp.split('\n');
+
+  inp.splice(192,15);
+  var outp = inp.join('\n');    
+  fs.writeFileSync(self.themeNameSpace+'/library/bones.php', outp);  
+  
+    
+  
+    this.log.ok('Custom Post Types Removed');
+  }
 };
 
 
@@ -191,4 +231,6 @@ WpBonesGenerator.prototype.app = function () {
 
   this.template('_gruntfile.js', this.themeNameSpace + '/library/grunt/gruntfile.js');
   this.template('_package.json', this.themeNameSpace + '/library/grunt/package.json');
+  //this.template('_bower.json', this.themeNameSpace + '/bower.json');
 };
+

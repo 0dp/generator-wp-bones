@@ -22,12 +22,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.13.0",
-    "simple-git": "~0.7.0",
+    "async": "~0.7.0",
     "chalk": "~1.0.0",
+    "fs-extra": "^0.16.5",
     "rsvp": "~3.0.6",
+    "simple-git": "~0.7.0",
     "temporary": "0.0.8",
-    "async": "~0.7.0"
+    "yeoman-generator": "~0.13.0"
   },
   "devDependencies": {
     "mocha": "~1.12.0"
