@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 			},
 			all: [
 				'gruntfile.js',
-				'../js/script.js'
+				'../js/scripts.js'
 			]
 		},
 
