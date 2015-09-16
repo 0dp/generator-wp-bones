@@ -17,7 +17,7 @@
     "grunt-contrib-copy": "~0.5.0",
     "grunt-copy-to": "0.0.10",
     "grunt-rm": "0.0.4",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-sass": "~0.8.0"
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-sass": "~0.9.2"
   }
 }
