@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 			},
 			all: [
 				'gruntfile.js',
-				'../js/script.js'
+				'../js/scripts.js'
 			]
 		},
 
@@ -94,6 +94,12 @@ module.exports = function(grunt) {
 					'uglify',
 					'notify:js'
 				],
+				options: {
+					livereload: true
+				}
+			},
+			php: {
+				files: ['../../*.php', '../../**/*.php'],
 				options: {
 					livereload: true
 				}
